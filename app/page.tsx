@@ -424,7 +424,7 @@ export default function Minesweeper() {
           <div className="w-full overflow-auto">
             <div className="flex justify-center min-w-fit">
               <div
-                className="grid gap-1 bg-gray-200 dark:bg-slate-700 p-4 rounded-xl"
+                className="grid gap-1 bg-gray-200 dark:bg-slate-700 p-4 rounded-xl user-select-none"
                 style={{
                   gridTemplateColumns: `repeat(${board[0]?.length || 1}, minmax(16px, 40px))`,
                 }}
