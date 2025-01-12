@@ -426,7 +426,7 @@ export default function Minesweeper() {
               <div
                 className="grid gap-1 bg-gray-200 dark:bg-slate-700 p-4 rounded-xl"
                 style={{
-                  gridTemplateColumns: `repeat(${board[0]?.length || 1}, minmax(28px, 40px))`,
+                  gridTemplateColumns: `repeat(${board[0]?.length || 1}, minmax(16px, 40px))`,
                 }}
               >
                 {board.map((row, rowIndex) =>
@@ -437,7 +437,7 @@ export default function Minesweeper() {
                       onContextMenu={(e) => toggleFlag(rowIndex, colIndex, e)}
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
-                      className={`w-full aspect-square flex items-center justify-center rounded-lg text-base sm:text-lg font-medium transition-colors
+                      className={`w-full aspect-square flex items-center justify-center rounded-lg font-medium transition-colors
                       ${
                         cell.state === "revealed"
                           ? cell.isMine
@@ -448,19 +448,19 @@ export default function Minesweeper() {
                         cell.state === "revealed" && cell.adjacentMines > 0
                           ? COLORS[cell.adjacentMines as keyof typeof COLORS]
                           : ""
-                      }`}
+                      } ${difficulty === "easy" ? "text-sm sm:text-lg md:text-lg" : difficulty === "medium" ? "text-xs sm:text-sm md:text-base lg:text-lg" : "text-xs sm:text-xs md:text-base"}`}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
                       {cell.state === "revealed" && cell.isMine && (
-                        <Bomb className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                        <Bomb className="w-3 h-3 sm:w-5 sm:h-5 text-white" />
                       )}
                       {cell.state === "revealed" &&
                         !cell.isMine &&
                         cell.adjacentMines > 0 &&
                         cell.adjacentMines}
                       {cell.state === "flagged" && (
-                        <Flag className="w-4 h-4 sm:w-5 sm:h-5 text-red-500 dark:text-red-400" />
+                        <Flag className="w-3 h-3 sm:w-5 sm:h-5 text-red-500 dark:text-red-400" />
                       )}
                     </motion.button>
                   )),
