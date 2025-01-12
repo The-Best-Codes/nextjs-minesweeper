@@ -424,7 +424,7 @@ export default function Minesweeper() {
           <div className="w-full overflow-auto">
             <div className="flex justify-center min-w-fit">
               <div
-                className="grid gap-1 bg-gray-200 dark:bg-slate-700 p-4 rounded-xl user-select-none"
+                className="grid gap-1 bg-gray-200 dark:bg-slate-700 p-4 rounded-xl select-none"
                 style={{
                   gridTemplateColumns: `repeat(${board[0]?.length || 1}, minmax(16px, 40px))`,
                 }}
@@ -437,7 +437,7 @@ export default function Minesweeper() {
                       onContextMenu={(e) => toggleFlag(rowIndex, colIndex, e)}
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
-                      className={`w-full aspect-square flex items-center justify-center rounded-lg font-medium transition-colors
+                      className={`w-full aspect-square flex items-center justify-center rounded-lg font-medium transition-colors select-none
                       ${
                         cell.state === "revealed"
                           ? cell.isMine
