@@ -460,7 +460,10 @@ export default function Minesweeper() {
                         cell.adjacentMines > 0 &&
                         cell.adjacentMines}
                       {cell.state === "flagged" && (
-                        <Flag className="w-3 h-3 sm:w-5 sm:h-5 text-red-500 dark:text-red-400" />
+                        <Flag
+                          fill="#ef4444"
+                          className="w-3 h-3 sm:w-5 sm:h-5 text-red-500 dark:text-red-400"
+                        />
                       )}
                     </motion.button>
                   )),
