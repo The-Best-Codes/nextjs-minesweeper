@@ -13,6 +13,7 @@
     "@radix-ui/react-label": "^2.1.1",
     "@radix-ui/react-select": "^2.1.4",
     "@radix-ui/react-slot": "^1.1.1",
+    "@radix-ui/react-switch": "^1.1.2",
     "@types/canvas-confetti": "^1.9.0",
     "@vercel/og": "^0.6.4",
     "canvas-confetti": "^1.9.3",
