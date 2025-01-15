@@ -8,6 +8,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import clsx from "clsx";
 import {
   Bomb,
   CircleHelp,
@@ -70,6 +71,28 @@ export default function Minesweeper() {
   const [gameWon, setGameWon] = useState(false);
   const [firstClick, setFirstClick] = useState(true);
   const [darkMode, setDarkMode] = useState(false);
+
+  // Helper function to count flags around a cell
+  const flagCountAroundCell = (row: number, col: number): number => {
+    let count = 0;
+    for (let dr = -1; dr <= 1; dr++) {
+      for (let dc = -1; dc <= 1; dc++) {
+        if (dr === 0 && dc === 0) continue;
+        const nr = row + dr;
+        const nc = col + dc;
+        if (
+          nr >= 0 &&
+          nr < board.length &&
+          nc >= 0 &&
+          nc < board[0].length &&
+          board[nr][nc].state === "flagged"
+        ) {
+          count++;
+        }
+      }
+    }
+    return count;
+  };
 
   // Initialize board
   const initializeBoard = (
@@ -261,6 +284,42 @@ export default function Minesweeper() {
     resetGame();
   }, [difficulty, customSettings, resetGame]);
 
+  const getCellClassName = (cell: Cell, rowIndex: number, colIndex: number) => {
+    const isRevealed = cell.state === "revealed";
+    const tooManyFlags =
+      isRevealed &&
+      cell.adjacentMines > 0 &&
+      flagCountAroundCell(rowIndex, colIndex) > cell.adjacentMines;
+
+    const correctFlagCount =
+      isRevealed &&
+      cell.adjacentMines > 0 &&
+      flagCountAroundCell(rowIndex, colIndex) === cell.adjacentMines;
+
+    return clsx(
+      "w-full aspect-square flex items-center justify-center rounded-lg font-medium transition-colors select-none",
+      {
+        "bg-red-500 dark:bg-red-400": isRevealed && cell.isMine,
+        "bg-white dark:bg-slate-500":
+          isRevealed && !cell.isMine && !tooManyFlags,
+        "bg-gray-300 dark:bg-slate-800 hover:bg-gray-400 dark:hover:bg-slate-600/80":
+          !isRevealed,
+        "bg-slate-200 dark:bg-slate-600/80 text-black dark:text-slate-400":
+          correctFlagCount,
+        "bg-red-400 dark:bg-red-500/80 text-white": tooManyFlags,
+        [COLORS[cell.adjacentMines as keyof typeof COLORS]]:
+          isRevealed &&
+          cell.adjacentMines > 0 &&
+          flagCountAroundCell(rowIndex, colIndex) < cell.adjacentMines &&
+          !tooManyFlags,
+        "text-sm sm:text-lg md:text-lg": difficulty === "easy",
+        "text-xs sm:text-sm md:text-base lg:text-lg": difficulty === "medium",
+        "text-xs sm:text-xs md:text-base":
+          difficulty === "hard" || difficulty === "custom",
+      },
+    );
+  };
+
   return (
     <div className="min-h-screen bg-slate-100 dark:bg-slate-900 transition-colors duration-300 p-4 sm:p-8 flex items-center justify-center">
       {/* Centering here */}
@@ -437,18 +496,7 @@ export default function Minesweeper() {
                       onContextMenu={(e) => toggleFlag(rowIndex, colIndex, e)}
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
-                      className={`w-full aspect-square flex items-center justify-center rounded-lg font-medium transition-colors select-none
-                      ${
-                        cell.state === "revealed"
-                          ? cell.isMine
-                            ? "bg-red-500 dark:bg-red-400"
-                            : "bg-white dark:bg-slate-500"
-                          : "bg-gray-300 dark:bg-slate-800 hover:bg-gray-400 dark:hover:bg-slate-600/80"
-                      } ${
-                        cell.state === "revealed" && cell.adjacentMines > 0
-                          ? COLORS[cell.adjacentMines as keyof typeof COLORS]
-                          : ""
-                      } ${difficulty === "easy" ? "text-sm sm:text-lg md:text-lg" : difficulty === "medium" ? "text-xs sm:text-sm md:text-base lg:text-lg" : "text-xs sm:text-xs md:text-base"}`}
+                      className={getCellClassName(cell, rowIndex, colIndex)}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
