@@ -301,10 +301,10 @@ export default function Minesweeper() {
       {
         "bg-red-500 dark:bg-red-400": isRevealed && cell.isMine,
         "bg-white dark:bg-slate-500":
-          isRevealed && !cell.isMine && !tooManyFlags && !correctFlagCount, // Added !correctFlagCount
+          isRevealed && !cell.isMine && !tooManyFlags && !correctFlagCount,
         "bg-gray-300 dark:bg-slate-800 hover:bg-gray-400 dark:hover:bg-slate-600/80":
           !isRevealed,
-        "bg-neutral-300 dark:bg-slate-600/80 text-black dark:text-slate-400":
+        "bg-neutral-300 dark:bg-slate-600/80 text-slate-500 dark:text-slate-400":
           correctFlagCount,
         "bg-red-400 dark:bg-red-500/80 text-white": tooManyFlags,
         [COLORS[cell.adjacentMines as keyof typeof COLORS]]:
