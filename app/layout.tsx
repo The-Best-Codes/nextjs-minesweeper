@@ -24,6 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: "/og.png",
   },
+  manifest: "/manifest.json"
 };
 
 export default function RootLayout({
