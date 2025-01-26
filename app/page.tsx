@@ -418,7 +418,7 @@ export default function Minesweeper() {
                         ),
                       )
                     }
-                    className="w-20 sm:w-24 p-2 rounded-lg bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-600 text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
+                    className="w-20 sm:w-24 p-2 rounded-lg bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-600 text-slate-800 dark:text-white focus:outline-hidden focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
                   />
                 </div>
                 <div className="flex flex-col gap-2">
@@ -440,7 +440,7 @@ export default function Minesweeper() {
                         ),
                       )
                     }
-                    className="w-20 sm:w-24 p-2 rounded-lg bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-600 text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
+                    className="w-20 sm:w-24 p-2 rounded-lg bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-600 text-slate-800 dark:text-white focus:outline-hidden focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
                   />
                 </div>
                 <div className="flex flex-col gap-2">
@@ -459,7 +459,7 @@ export default function Minesweeper() {
                         ),
                       )
                     }
-                    className="w-20 sm:w-24 p-2 rounded-lg bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-600 text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
+                    className="w-20 sm:w-24 p-2 rounded-lg bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-600 text-slate-800 dark:text-white focus:outline-hidden focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
                   />
                 </div>
               </div>
