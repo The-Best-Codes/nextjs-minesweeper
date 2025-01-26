@@ -297,7 +297,7 @@ export default function Minesweeper() {
       flagCountAroundCell(rowIndex, colIndex) === cell.adjacentMines;
 
     return clsx(
-      "w-full aspect-square flex items-center justify-center rounded-lg font-medium transition-colors select-none",
+      "w-full aspect-square flex items-center justify-center rounded-lg cursor-pointer font-medium transition-colors select-none",
       {
         "bg-red-500 dark:bg-red-400": isRevealed && cell.isMine,
         "bg-white dark:bg-slate-500":
@@ -334,7 +334,7 @@ export default function Minesweeper() {
           <div className="flex flex-row">
             <Dialog>
               <DialogTrigger asChild>
-                <button className="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                <button className="p-2 cursor-pointer rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
                   <CircleHelp className="w-5 h-5 text-slate-800 dark:text-white" />
                 </button>
               </DialogTrigger>
@@ -361,7 +361,7 @@ export default function Minesweeper() {
             </Dialog>
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+              className="p-2 rounded-full cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
             >
               {darkMode ? (
                 <Sun className="w-5 h-5 text-white" />
@@ -380,7 +380,7 @@ export default function Minesweeper() {
                 onClick={() => setDifficulty(diff as Difficulty)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`px-4 sm:px-6 py-2 rounded-lg font-medium transition-all text-sm sm:text-base ${
+                className={`px-4 sm:px-6 py-2 rounded-lg cursor-pointer font-medium transition-all text-sm sm:text-base ${
                   difficulty === diff
                     ? "bg-indigo-600 text-white dark:bg-indigo-500 shadow-lg shadow-indigo-500/30 dark:shadow-indigo-400/30"
                     : "bg-gray-100 dark:bg-slate-700 text-slate-800 dark:text-white hover:bg-gray-200 dark:hover:bg-slate-600"
@@ -472,7 +472,7 @@ export default function Minesweeper() {
               onClick={resetGame}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-6 py-2 bg-emerald-600 dark:bg-emerald-500 text-white rounded-lg font-medium flex items-center gap-2 mx-auto hover:bg-emerald-500 dark:hover:bg-emerald-400 transition-colors shadow-lg shadow-emerald-500/30 dark:shadow-emerald-400/30"
+              className="px-6 py-2 cursor-pointer bg-emerald-600 dark:bg-emerald-500 text-white rounded-lg font-medium flex items-center gap-2 mx-auto hover:bg-emerald-500 dark:hover:bg-emerald-400 transition-colors shadow-lg shadow-emerald-500/30 dark:shadow-emerald-400/30"
             >
               <RefreshCw className="w-4 h-4" />
               Reset Game
