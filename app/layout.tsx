@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://best-minesweeper.vercel.app"),
   title: "Minesweeper",
   description: "Minesweeper, free online",
   icons: {
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: "/og.png",
   },
-  manifest: "/manifest.json"
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({
