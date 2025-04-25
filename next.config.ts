@@ -11,7 +11,6 @@ const nextConfig: NextConfig =
   {
     experimental: {
       reactCompiler: true,
-      turbo: {},
     },
     typescript: {
       ignoreBuildErrors: true,
