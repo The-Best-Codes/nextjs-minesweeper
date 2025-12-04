@@ -9,14 +9,8 @@ const nextConfig: NextConfig =
   //   disable: process.env.NODE_ENV === "development",
   // })
   {
-    experimental: {
-      reactCompiler: true,
-    },
     typescript: {
       ignoreBuildErrors: true,
-    },
-    eslint: {
-      ignoreDuringBuilds: true,
     },
   };
 
